@@ -51,9 +51,9 @@
     // fungsi menentukan warna petak di papan dan posisi bidak
     let initpapan = (index, bidak) => {
       if (index === 0) {
-        return `<div class="col square black span-1-of-8">${bidak}</div>`;
-      } else {
         return `<div class="col square white span-1-of-8">${bidak}</div>`;
+      } else {
+        return `<div class="col square black span-1-of-8">${bidak}</div>`;
       }
     };
 
