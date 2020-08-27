@@ -12,7 +12,7 @@
   // 1  ♖, ♘, ♗, ♕, ♔, ♗, ♘, ♖
   //    a, b, c, d, e, f, g, h
 
-  let papan = [
+  const papan = [
     [" ", " ", " ", " ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " ", " ", " ", " "],
@@ -23,25 +23,30 @@
     [" ", " ", " ", " ", " ", " ", " ", " "],
   ];
 
-  let putih = [
+  const putih = [
     ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
     ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
   ];
 
-  let hitam = [
+  const hitam = [
     ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
     ["♟︎", "♟︎", "♟︎", "♟︎", "♟︎", "♟︎", "♟︎", "♟︎"],
   ];
 
-  let init = () => {
-    // mengisi bidak hitam ke papan
+  // fungsi utama untuk membuat tampilan chess board
+  // akan me-return element-element yang berhasil dibuat dari hasil
+  // looping variable array (putih) dan variable array (hitam)
+  // kedalam variable array (papan) hingga membentuk papan catur
+  // beserta bidak bidaknya
+  let render = () => {
+    // mengisi papan dengan bidak hitam
     for (let y = 0; y < hitam.length; y++) {
       for (let x = 0; x < papan[y].length; x++) {
         papan[y][x] = hitam[y][x];
       }
     }
 
-    // mengisi bidak putih ke papan
+    // mengisi papan dengan bidak putih
     for (let y = papan.length; y > papan.length - putih.length; y--) {
       for (let x = 0; x < papan[y - 1].length; x++) {
         papan[y - 1][x] = putih[papan.length - y][x];
@@ -70,7 +75,9 @@
     return str;
   };
 
+  // mendapatkan element chessboard di dalam div tag html dengan id = 'chessboard'
   let element = document.getElementById("chessboard");
 
-  element.innerHTML = init();
+  // memberikan element baru kedalam div tag html tsb
+  element.innerHTML = render();
 })();
